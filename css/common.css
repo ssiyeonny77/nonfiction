@@ -1,0 +1,148 @@
+@charset "utf-8";
+
+/* .common css */
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    /* outline: 2px solid blue; */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+    background-color: rgba(253, 248, 247, 0); 
+   
+   
+}
+
+.inbox {
+    width: 100%;         
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+.inbox .gnb-left,.gnb-right {
+    width: 100%;
+    /* inner 클래스에서 지정한 너비 */
+    margin: 0 auto;
+    height: 100px;
+    line-height: 100px;
+    /* 헤더 높이 설정 */
+    /* outline: 2px solid red; */ 
+    float: left;
+    width: 40%;
+    height: 100px;
+}
+
+
+/* 왼쪽 메뉴 안의 li들을 50%씩 배분 */
+.inbox .gnb-left li {
+    float: left;
+    width: 50%;
+    /* 2개의 메뉴가 50%씩 나눠 가져서 꽉 참 */
+    text-align: center;
+    /* 글자를 박스 중앙으로 */
+}
+
+/* 2. 로고 영역 (전체의 20%) */
+.inbox .logo {
+    float: left;
+    width: 20%;
+    height: 100px;
+    position: relative;
+    /* img의 기준 */
+    /*  outline: 2px solid red; */
+    /* 위치 확인용 */
+}
+
+.inbox .logo a {
+    width: 100%;
+    height: 100px;
+}
+
+.inbox .logo img {
+    height: 25%;
+    /* 부모 높이(100px)의 30%인 30px이 됩니다 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+/* 3. 오른쪽 메뉴 영역 (전체의 40%) */
+.gnb-right {
+    float: left;
+    width: 40%;
+    height: 100px;
+}
+
+/* 오른쪽 메뉴 안의 li들을 50%씩 배분 */
+.gnb-right li {
+    float: left;
+    width: 50%;
+    /* 2개의 메뉴가 50%씩 나눠 가져서 꽉 참 */
+    text-align: center;
+    /* 글자를 박스 중앙으로 */
+}
+
+/* 4. 링크 클릭 영역 확장 및 세로 중앙 정렬 */
+nav a {
+    width: 100%;
+    line-height: 100px;
+    /* 헤더 높이만큼 줘서 세로 중앙 정렬 */
+
+}
+
+nav ul li {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.inner {
+    width: 95%;
+    max-width: 1720px;
+    margin: 0 auto;
+/*    outline: 2px solid yellowgreen; */
+}
+
+
+
+.section-title {
+    color: #1B3322;
+    font-size: 3rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+   /*  outline: 2px solid red; */
+   margin-bottom: 40px;
+    
+}
+
+.eng-font {
+    font-family: "Cormorant Garamond", serif;
+}
+
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 400;
+     background-color: #fdf8f7;
+}
+
+
+
+

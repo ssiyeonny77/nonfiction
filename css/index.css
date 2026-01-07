@@ -1,0 +1,423 @@
+@charset "utf-8";
+
+/* index.css */
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    position: relative; /* absolute의 기준점이 됨 */
+    margin: 0;
+    overflow-x: hidden;
+}
+
+
+
+
+/* body의 가상 요소로 배경 로고 구현 */
+body::before {
+    content: "";
+    position: absolute;
+    
+    /* 1. 위치 설정 (핵심!) */
+    top: 860px;         
+    left: 77%;            
+
+    /* 2. 크기 설정 (반응형) */
+    /* 창 너비가 줄어들면 로고 크기도 비율대로 줄어듭니다. */
+    width: 35%;           
+    height: 700px;        /* 로고가 잘리지 않게 높이는 넉넉히 */
+
+    background-image: url('../img/nonfiction_logo.png');
+    background-size: contain;    /* 박스 크기에 맞춰 로고 자동 축소 */
+    background-repeat: no-repeat;
+    background-position: center; /* 박스 안에서 중앙 정렬 */
+    
+    z-index: -1;
+
+    /* 1. 시작 상태를 0(투명)으로 설정 */
+    opacity: 0;
+    
+    
+    /* 3. 애니메이션 (그 자리에서 무한 회전) */
+   /* [중요 2] 애니메이션 두 개를 쉼표(,)로 연결 */
+   
+  animation: 
+        logo-fade-in 2s ease-in-out 1s forwards, 
+        rotate-bg 30s linear infinite;
+    
+}
+
+@keyframes logo-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        
+        opacity: 0.1; 
+    }
+}
+
+@keyframes rotate-bg {
+    from { 
+        /* 현재 위치를 유지하면서 0도부터 시작 */
+        transform: rotate(0deg); 
+    }
+    to { 
+        /* 현재 위치를 유지하면서 360도 회전 */
+        transform: rotate(360deg); 
+    }
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    /* outline: 2px solid blue; */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+    background-color: rgba(253, 248, 247, 0); 
+    /* 2. 배경색이 바뀔 때 0.4초 동안 부드럽게 변해라 */
+    transition: all 0.4s ease;
+   
+}
+
+/* 스크롤에 따라 변경될 header 디자인 */
+header.on {
+    background-color: rgba(253, 248, 247, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0);
+}
+
+.inbox {
+    width: 100%;         
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+.inbox .gnb-left,.gnb-right {
+    width: 100%;
+    /* inner 클래스에서 지정한 너비 */
+    margin: 0 auto;
+    height: 100px;
+    line-height: 100px;
+    /* 헤더 높이 설정 */
+    /* outline: 2px solid red; */ 
+    float: left;
+    width: 40%;
+    height: 100px;
+}
+
+
+/* 왼쪽 메뉴 안의 li들을 50%씩 배분 */
+.inbox .gnb-left li {
+    float: left;
+    width: 50%;
+    /* 2개의 메뉴가 50%씩 나눠 가져서 꽉 참 */
+    text-align: center;
+    /* 글자를 박스 중앙으로 */
+}
+
+/* 2. 로고 영역 (전체의 20%) */
+.inbox .logo {
+    float: left;
+    width: 20%;
+    height: 100px;
+    position: relative;
+    /* img의 기준 */
+    /*  outline: 2px solid red; */
+    /* 위치 확인용 */
+}
+
+.inbox .logo a {
+    width: 100%;
+    height: 100px;
+}
+
+.inbox .logo img {
+    height: 25%;
+    /* 부모 높이(100px)의 30%인 30px이 됩니다 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+/* 3. 오른쪽 메뉴 영역 (전체의 40%) */
+.gnb-right {
+    float: left;
+    width: 40%;
+    height: 100px;
+}
+
+/* 오른쪽 메뉴 안의 li들을 50%씩 배분 */
+.gnb-right li {
+    float: left;
+    width: 50%;
+    /* 2개의 메뉴가 50%씩 나눠 가져서 꽉 참 */
+    text-align: center;
+    /* 글자를 박스 중앙으로 */
+}
+
+/* 4. 링크 클릭 영역 확장 및 세로 중앙 정렬 */
+nav a {
+    width: 100%;
+    line-height: 100px;
+    /* 헤더 높이만큼 줘서 세로 중앙 정렬 */
+
+}
+
+nav ul li {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+
+/* main */
+main {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto 100px;
+    height: 100%;
+
+    background: url('../img/main-visual.jpg') no-repeat center top/cover;
+    position: relative;  /* .visual-txt의 기준 */
+
+    opacity: 0;                                 /* 추가: 처음엔 투명하게 */
+    animation: fadeIn 2s ease-in-out forwards;  /* 추가: 2초 동안 스르륵 */
+   
+   
+
+}
+
+
+
+main .visual-txt {
+    text-align: center;
+    /* 글자 가운데 정렬 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-family: "Cormorant Garamond", serif;
+
+    opacity: 0;                                 /* 추가: 처음엔 투명하게 */
+    animation: fadeIn 2s ease-in-out 0.5s forwards; /* 추가: 0.5초 뒤에 스르륵 */
+
+}
+
+main .visual-txt .main-title {
+    font-weight: 500;
+    font-size: 3.5rem;
+
+}
+
+main .visual-txt .main-des {
+    font-weight: 400;
+    font-size: 2rem;
+
+}
+
+/* 스르륵 나타나는 효과 정의 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+section.brand .inner {}
+/* section.brand .inner .section-title {
+    margin-bottom: 60px;
+} */
+
+.brand .brand-con {
+    /* outline: 2px solid orange; */
+    width: 100%;
+    position: relative;
+    margin-bottom: 100px;
+}
+
+.brand .brand-con .brand-left {
+    float: left;
+    width: 50%;
+    margin-right: 3%;
+
+}
+
+.brand .brand-con .brand-left img {
+    display: block;
+    width: 100%;
+}
+
+.brand .brand-con .brand-right {
+    /* outline: 2px solid peru; */
+    float: left;
+    width: 47%;
+    /* padding-top: 80px;
+    box-sizing: border-box; */
+    /* margin-top: 80px; */
+    position: absolute;
+    bottom: 10%;
+    right: 0;
+
+}
+
+.brand-right .brand-title {
+    font-weight: 500;
+    font-size: 1.5rem;
+    letter-spacing: 0.08rem;
+    color: #1B3322;
+    margin-bottom: 20px;
+}
+
+.brand-right .brand-des {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #747772;
+}
+
+
+
+
+
+.btn-box .btn-more {
+    
+     font-weight: 500;
+    border: 1px solid #1B3322;
+    width: 150px;
+    height: 40px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    
+    display: inline-block;
+    padding: 5px 20px;
+    box-sizing: border-box;
+    transition: 0.3s;
+  
+}
+
+
+.btn-more:hover {
+    background: #4A5D4E;
+    border: none;
+    color: #fff;
+}
+
+/* section fragrance */
+
+/* 3. Fragrance 리스트 여백 맞춤 (여기가 핵심!) */
+
+.fragrance {
+    margin-bottom: 8%;
+}
+.fragrance .inner .fra-list {
+    width: 100%;           /* 부모인 .inner 너비에 꽉 맞춤 */
+  /*  outline: 2px solid rebeccapurple; */
+   margin-bottom: 40px;
+}
+
+.fragrance .inner .fra-list::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.fragrance .inner .fra-list .list-card {
+    float: left;
+    width: 32%;            /* 32% * 3개 = 96%, 나머지 4%를 여백으로 사용 */
+    margin-right: 2%;      /* 카드 사이 간격 */
+    text-align: center;
+}
+
+
+
+.fragrance .inner .fra-list .list-card:last-child {
+   float: right;
+   margin-right: 0;
+}
+
+/* 이미지 박스의 규격을 설정하고 위치 기준점을 잡습니다. */
+.img-box {
+    position: relative;
+    width: 100%; /* 부모 너비에 맞춤 (필요에 따라 수정) */
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+/* 두 이미지 모두 기본적으로 겹치게 설정 */
+.img-box img {
+    width: 100%;
+    display: block;
+    transition: opacity 0.4s ease-in-out; /* 전환 속도 조절 */
+}
+
+/* 마우스를 올리기 전: hover 이미지는 투명하게 */
+.img-box .hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+/* 마우스를 올렸을 때 (Hover) */
+.list-card:hover .origin {
+    opacity: 0; /* 기존 이미지는 사라짐 */
+}
+
+.list-card:hover .hover {
+    opacity: 1; /* 호버 이미지는 나타남 */
+}
+
+
+.fragrance .inner .btn-box {
+    text-align: center;
+    
+    /* outline: 2px solid red; */
+   margin-top: 90px;
+}
+    
+
+
+
+/* 텍스트 스타일 */
+.fra-list .list-card .fname { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 600; margin-bottom: 10px; }
+.fra-list .list-card .material { color: #888; font-size: 1rem; margin-bottom: 15px; }
+.fra-list .list-card .fdes { font-size: 1.2rem; line-height: 1.6; font-weight: 400; letter-spacing: -0.9px; color: #555; }
+
+
+footer {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-top: 1px solid #e0d8d6;
+    margin: 0 auto;
+}
+
+
+footer .inner-footer {
+    /* outline: 2px solid red; */
+    padding: 20px 15px 6px;
+    /* box-sizing: border-box; */
+    color: rgba(0, 0, 0, 0.7);
+    max-width: 1920px;
+    margin: 0 auto;
+    letter-spacing: -0.1px;
+    
+}
+
+footer .inner-footer .info {
+    margin-bottom: 6px;
+    
+}
