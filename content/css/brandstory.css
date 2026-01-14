@@ -1,0 +1,312 @@
+@charset "utf-8";
+
+.page {
+    width: 100%;
+    height: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    /* outline: 2px solid red; */
+}
+
+/* brand1 */
+
+#brand1 .first-story {
+    width: 100%;
+    height: 100%;
+}
+
+/* 3. 로고 박스 (상단 50%) */
+#brand1 .first-story .logo-box {
+    width: 100%;
+    height: 50%;
+    /* 화면의 위쪽 절반 */
+    background-color: #fdf8f7;
+    /* 상단 아이보리 배경 */
+    position: relative;
+    /* 로고 이미지를 중앙에 두기 위한 기준 */
+}
+
+/* 로고 이미지 중앙 정렬 (배운 방식 그대로) */
+.first-story .logo-box .brand-logo {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    /* 로고 크기는 디자인 보며 조절하세요 */
+    margin-top: 30px;
+}
+
+/* 4. 텍스트 박스 (하단 50%) */
+.first-story .txt-box {
+    width: 100%;
+    height: 50%;
+    /* 화면의 아래쪽 절반 */
+    background-color: #6a8270;
+    /* 피그마의 초록색 배경 */
+    position: relative;
+    /* 텍스트를 중앙에 두기 위한 기준 */
+    color: #fff;
+    /* 글자색 흰색 */
+    text-align: center;
+    /* 가로 중앙 정렬 */
+}
+
+/* 텍스트 내용 전체 중앙 정렬 */
+/* h2와 p를 묶어서 중앙에 두기 위해 absolute를 사용합니다 */
+.first-story .txt-box .first-title {
+    position: absolute;
+    width: 100%;
+    top: 35%;
+    /* 하단 영역 내에서 약간 위쪽 */
+    font-family: "Cormorant Garamond", serif;
+    font-size: 3.5rem;
+    font-weight: 500;
+}
+
+.first-story .brand-des {
+    position: absolute;
+    width: 100%;
+    top: 60%;
+    /* h2 아래쪽 적당한 위치 */
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 1.25rem;
+}
+
+
+
+/* brand2 */   /* 1. 전체 섹션 배경 설정 */
+#brand2 {
+    width: 100%;
+    height: 100%;
+    /* 부모 높이 상속 */
+    position: relative;
+    /* 버튼 배치를 위한 기준 */
+    overflow: hidden;
+    /* 슬라이드가 화면 밖으로 나가는 것 방지 */
+    background-image: url('../images/brand/history.jpg');
+    /* 피그마의 숲 이미지 */
+    background-size: cover;
+    background-position: center;
+}
+
+/* 2. 양쪽 100px 여백 가이드 (보여지는 창) */
+.slide-inner {
+    width: calc(100% - 200px);
+    /* 양옆 100px씩 제외 */
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    /* .slide-wrap의 부모 기준 */
+
+    overflow: hidden;
+}
+
+/* 3. 슬라이드 복도 (높이를 카드 높이에 맞춤) */
+.slide-wrap {
+    width: 5000px;
+    height: 450px;
+    /* .slide-box의 높이와 일치시킴 */
+    position: absolute;
+    left: 0;
+    /* 화면 세로 중앙에 배치하는 공식 */
+    top: 55%;
+    /* 피그마 디자인상 헤더 아래쪽에 위치하도록 조정 */
+    transform: translateY(-50%);
+}
+
+/* 4. 개별 슬라이드 카드 */
+.slide-box {
+    float: left;
+    width: 300px;
+    height: 450px;
+    /* 카드 자체 높이 */
+    background-color: rgba(255, 255, 255, 0.7);
+    margin-right: 30px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    padding: 30px 20px;
+    text-align: center;
+    backdrop-filter: blur(5px);
+}
+
+.slide-box .slide-des {
+    /*   outline: 2px solid salmon; */
+}
+
+.slide-box .slide-des .year {
+    font-size: 30px;
+    font-weight: bold;
+    color: #7A5B3B;
+    margin-bottom: 20px;
+}
+
+.slide-box .slide-des h3 {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 20px;
+    margin-bottom: 10px;
+
+}
+
+.slide-box .slide-des .item-sub {
+    font-size: 1.2rem;
+    font-weight: 700;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    color: #2A2A2A;
+
+}
+
+.slide-box .slide-des .b-logo {
+    width: 100px;
+    /* 기존보다 조금 줄여서 공간 확보 */
+    margin: 0 auto;
+    /* 이미지 아래 간격도 적절히 */
+
+}
+
+.slide-box .slide-des .item-des {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+
+
+/* 2. 공통 버튼 스타일 */
+.slide-btn {
+    position: absolute;
+    top: 50%;
+    /* 화면 세로 정중앙 */
+    transform: translateY(-50%);
+    /* 정확한 중앙 정렬 */
+    width: 60px;
+    /* 버튼 크기 (이미지 크기에 맞게 조절) */
+    height: 60px;
+    background-color: transparent;
+    /* 배경색 투명하게 */
+    border: none;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    z-index: 1000;
+    /* 슬라이드보다 위에 보이게 */
+}
+
+
+
+/* 1. 두 섹션 모두 배경 설정을 각각 해줍니다 */
+#brand3, #brand6 {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+/* brand3, brand6 */
+/* 각각의 배경 이미지 경로만 따로 지정 */
+#brand3 { background-image: url('../images/brand/ritual.jpg'); }
+#brand6 { background-image: url('../images/brand/ourdesign.jpg'); }
+
+/* 2. 공통된 반투명 텍스트 박스 스타일 */
+#brand3 .wide-box, 
+#brand6 .wide-box {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 18px 0;
+    text-align: center;
+    
+    /* 세로 중앙 정렬 */
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(20%);
+    backdrop-filter: blur(5px); /* 뒤 배경 흐림 효과 추가 가능 */
+}
+
+
+.b-tit {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: #4a3d35;
+    margin-bottom: 15px;
+}
+
+ .b-sub {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #738676;
+    margin-bottom: 30px;
+}
+
+ .b-desc {
+    margin: 0;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #A88860;
+    font-weight: 400;
+    word-break: keep-all;
+}
+
+
+/* [공통] 세로 분할 섹션 레이아웃 */
+.page {
+    position: relative;
+    width: 100%;
+    height: 100%; /* 화면 꽉 차는 높이 */
+    overflow: hidden;
+}
+
+/* 텍스트 박스 기본 설정 (왼쪽) */
+.half-box {
+    position: absolute;
+    top: 50%;
+    left: 10%; /* 왼쪽 여백 */
+    transform: translateY(-50%);
+    width: 35%; /* 텍스트 너비 */
+    z-index: 10;
+}
+
+.half-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    /* 박스를 벗어나는 이미지 부분은 숨김 처리 */
+    /* overflow: hidden;  */
+}
+
+.half-img img {
+    /* 가로 너비를 부모 박스(50%)에 꽉 차게 강제 */
+    width: 100%; 
+    /* 세로는 비율에 맞춰 자동으로 조절 */
+    height: 100%; 
+
+    /* 만약 세로가 짧아서 아래에 여백이 생긴다면 아래 코드를 대신 쓰세요 */
+    /* min-width: 100%; */
+    /* min-height: 100%; */
+
+    /* 이미지 위치를 박스 중앙으로 정렬 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+#brand5 .half-box {
+    left: auto;      /* 기존에 설정된 왼쪽 10%를 무효화 */
+    right: 10%;      /* 오른쪽에서 10% 여백을 줌 */
+}
+
+/* [개별] brand5의 이미지는 왼쪽으로 이동 */
+#brand5 .half-img {
+    right: auto;     /* 기존에 설정된 오른쪽 0을 무효화 */
+    left: 0;         /* 왼쪽 끝에 밀착 */
+}
