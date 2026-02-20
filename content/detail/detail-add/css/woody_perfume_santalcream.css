@@ -1,0 +1,298 @@
+.total-prod .top-name {
+    font-size: 28px;
+    font-weight: 500;
+    margin: 20px 0 20px 0;
+}
+
+
+.prod-wrap {
+    position: relative;
+    /* 기준점 */
+    min-height: 600px;
+    /* 이미지 높이에 맞춰 부모 높이를 확보하세요 */
+    margin-bottom: 25%;
+}
+
+.prod-wrap::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* 2. 큰 덩어리 나누기 (이미지 영역 vs 텍스트 영역) */
+.prod-wrap .prod-card {
+    float: left;
+    width: 55%;
+    /* .prod-txtbox 와 .prod-card 의 60%와 38%*/
+    /* 전체 화면에서 이미지 영역이 차지할 넓이 */
+    /*  outline: 2px solid red; */
+}
+
+.prod-wrap .prod-card .slider {
+    float: left;
+    width: 20%;
+    /* 썸네일 리스트의 고정 넓이 */
+    list-style: none;
+    padding-right: 10px;
+    box-sizing: border-box;
+    /* outline: 2px solid green; */
+}
+
+.slider .thumb {
+    cursor: pointer; /* 마우스 손가락 모양 */
+    transition: 0.3s; /* 부드러운 변화 */
+    opacity: 0.6; /* 기본은 살짝 흐리게 */
+}
+
+.slider .thumb.on, .slider .thumb:hover {
+    opacity: 1; /* 활성화되거나 마우스 올리면 선명하게 */
+}
+
+.prod-wrap .prod-card .thumb-item {
+    margin-bottom: 6px;
+    width: 100%;
+}
+
+.prod-wrap .prod-card .thumb-item img {
+    width: 100%;
+    display: block;
+}
+
+.prod-wrap .prod-card .prod-visual {
+    float: right;
+    width: 80%;
+
+}
+
+.prod-wrap .prod-card .prod-visual img {
+    width: 100%;
+    display: block;
+    /* 너무 커지지 않게 제한 */
+    margin: 0 auto;
+
+}
+
+.prod-wrap .prod-txtbox {
+    position: absolute;
+    top: 30%;
+    transform: translateY(-50%);
+
+    right: 0;
+    /* 여백 없이 오른쪽 끝에 딱 붙임 */
+    width: 45%;
+    /* 나머지 50%를 꽉 채움 */
+
+    /* [이미지 60%] + [텍스트 40%] = 합계 100% */
+
+    padding: 0 50px;
+    /* 박스는 100%로 맞추되, 글자가 이미지에 너무 붙지 않게 안쪽 여백만 살짝 줍니다. */
+    box-sizing: border-box;
+
+}
+
+.prod-txtbox .item-name {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.prod-txtbox .item-info {
+    /*  outline: 2px solid brown; */
+}
+
+.prod-txtbox .item-info .description {
+    font-size: 18px;
+    color: #777;
+    margin-bottom: 20px;
+    font-family: "Noto Serif KR", serif;
+}
+
+.prod-txtbox .item-info .material {
+    margin-bottom: 14px;
+}
+
+.prod-txtbox .item-info .size-box {}
+
+.prod-txtbox .item-info .size-box .size-title {
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.size-box .size-numb span {
+    display: inline-block;
+    cursor: pointer;
+    /* 마우스를 올리면 손가락 모양으로 변함 */
+    transition: 0.2s;
+    /* 색이 부드럽게 변함 */
+    font-size: 16px;
+}
+
+.size-box .size-numb span:hover {
+    color: #000;
+    font-weight: bold;
+    text-decoration: underline;
+    /* 마우스 올렸을 때 강조 효과 */
+}
+
+/* 현재 선택된 사이즈를 강조하고 싶을 때 (jQuery로 추가할 클래스) */
+.size-box .size-numb span.on {
+    color: #000;
+    font-weight: bold;
+}
+
+.use-box::before {
+    content: "";
+    position: absolute;
+    top: -43%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 300px;
+
+    /* background: [색상] [이미지] [반복여부] [위치] / [크기] */
+    background: url('../img/woody-perfume/nonfiction_logo.png') no-repeat center / contain;
+
+    animation: rotate_logo 30000ms linear infinite;
+}
+
+
+/* 회전 동작 정의 */
+@keyframes rotate_logo {
+    from {
+        /* 기존 위치 중앙 정렬(translateX)을 유지하면서 0도부터 시작 */
+        transform: translateX(-50%) rotate(0deg);
+    }
+
+    to {
+        /* 360도까지 회전 */
+        transform: translateX(-50%) rotate(360deg);
+    }
+}
+
+
+
+/* 2. 상단 반반 박스 */
+.use-box {
+    background-color: #FAF9F6;
+    width: 100%;
+    /* 텍스트 박스와 통일감 */    
+    position: relative;
+    /* ::before의 기준점이 됩니다 */
+}
+
+.use-box .use-imgbox {
+    width: 50%;
+    /* 왼쪽 절반 */
+    float: left;
+    /* 왼쪽으로 띄우기 */
+
+}
+
+.use-box .use-imgbox img {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.use-box .use-txtbox {
+    width: 50%;
+    position: absolute;
+    /* [정중앙 공식] */
+    top: 50%;
+    right: 0;
+    /* 오른쪽 절반 영역에 위치해야 하므로 */
+    transform: translateY(-50%);
+    /* 위아래 중앙 */
+
+    text-align: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    /* 좌우 여백 */
+}
+
+.use-box .use-txtbox h3 {
+    font-size: 22px;
+    font-weight: normal;
+    margin-bottom: 30px;
+}
+
+.use-txtbox p {
+    /* 1. 줄 간격 (기본값은 1~1.2 정도입니다) */
+    line-height: 1.8;
+    /* 1.8배에서 2배 사이가 가장 여유롭고 고급스러워요 */
+    font-size: 20px;
+    /* 2. 자간 (글자 사이 간격) */
+    letter-spacing: -0.02em;
+    /* 살짝 좁히면 훨씬 정갈해 보입니다 */
+
+    /* 3. 문단 사이 간격 */
+    margin-top: 20px;
+}
+
+
+
+
+
+.video-wrap {
+    clear: both;
+    width: 100%;
+    max-width: 1000px;
+    /* 가로로 시원하게 보이도록 최대 너비 확장 */
+    margin: 80px auto 200px;
+    overflow-x: hidden;
+}
+
+.video-box {
+    width: 150%;
+    /* 1. 박스 비율을 영상과 똑같이 16:9로 맞춤 (검은 여백 제거 핵심) */
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    /* 디자인을 위해 모서리를 살짝 굴려도 예뻐요 */
+
+    margin: 0 auto;
+    /* 박스 자체를 중앙 정렬하려 하지만 150%라 화면을 넘칠 수 있음 */
+    left: 50%;
+    /* 150% 박스를 화면 중앙으로 맞추기 위한 팁 */
+    transform: translateX(-50%);
+
+
+}
+
+.video-box iframe {
+    position: absolute;
+    top: 0;
+    /* 정중앙 정렬 공식 적용 */
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 45%;
+    /* 박스 내부에서 차지할 영상의 너비 */
+    height: 100%;
+    /* 세로는 박스에 꽉 채움 */
+    border: none;
+    display: block;
+}
+
+.video-txtbox {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.video-txtbox h3 {
+    font-size: 26px;
+    margin-bottom: 18px;
+}
+
+.video-txtbox p {
+    font-size: 20px;
+
+    /* 줄 간격 추가: 1.6~1.8 사이가 가장 고급스럽습니다 */
+    line-height: 1.8;
+    
+    /* 자간 조절: 살짝 좁히면(-0.02em) 더 정갈해 보입니다 */
+    letter-spacing: -0.02em;
+    
+    /* 텍스트 가독성을 위해 상단 여백 살짝 조절 (필요시) */
+    margin-top: 20px;
+}

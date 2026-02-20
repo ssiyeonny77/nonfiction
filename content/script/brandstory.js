@@ -1,134 +1,180 @@
-$(document).ready(function() {
-    var currentIdx = 0; 
-    var totalPages = $(".page").length; 
-    var isMoving = false; 
+$(document).ready(function () {
 
-    // 초기 실행
-    playAnimation(0);
+    // [공유 변수] 휠 상태와 슬라이드 제어를 위해 상단에 유지
+    var pageCount = 0;
+    var stat = 0;
+    var autocall;
+    var moveNum = 0;
 
-    // 구형 브라우저 호환 휠 이벤트
-    $(window).on('mousewheel DOMMouseScroll', function(e) {
-        if (isMoving) return; 
+    // [1] 마우스 휠 이벤트 (모든 로직의 중심)
+    $(document).on('mousewheel DOMMouseScroll', function (e) {
 
+        // 이동 중이면 차단
+        if (stat === 1) return false;
+        stat = 1;
+
+        var total = $('.page').length;
         var delta = 0;
-        var E = e.originalEvent;
 
-        // 크롬/익스플로러는 wheelDelta, 파이어폭스는 detail을 사용함
-        if (E.wheelDelta) {
-            delta = E.wheelDelta / 120; // 일반적인 환경
-        } else if (E.detail) {
-            delta = -E.detail / 3; // 파이어폭스 환경
+        // 휠 데이터 확인 (사용자 조작인지 trigger인지 구분)
+        if (e.originalEvent) {
+            const evt = e.originalEvent;
+            delta = evt.wheelDelta ? evt.wheelDelta : -evt.detail;
+            if (/Firefox/i.test(navigator.userAgent)) delta = -evt.detail;
         }
 
-        // delta가 음수면 아래로, 양수면 위로 이동
+        // 페이지 번호 계산 (사용자가 직접 굴렸을 때만 작동)
         if (delta < 0) {
-            if (currentIdx < totalPages - 1) {
-                currentIdx++;
-                movePage(currentIdx);
-            }
-        } else {
-            if (currentIdx > 0) {
-                currentIdx--;
-                movePage(currentIdx);
-            }
+            pageCount++;
+            if (pageCount === total) pageCount = total - 1;
+        } else if (delta > 0) {
+            pageCount--;
+            if (pageCount === -1) pageCount = 0;
         }
-    });
 
-    function movePage(idx) {
-        isMoving = true; 
-        var targetTop = $(window).height() * idx;
+        // 이동 위치 구하기
+        var pageTop = $('.page').eq(pageCount).offset().top;
 
-        $("html, body").stop().animate({
-            scrollTop: targetTop
-        }, 800, function() {
-            isMoving = false; 
-            playAnimation(idx); 
-        });
-    }
+        // 페이지 이동 애니메이션
+        $('html, body').stop().animate({
+            scrollTop: pageTop + 'px'
+        }, 600, function () {
 
-    function playAnimation(idx) {
-        $(".page").removeClass("active");
-        var $currentPage = $(".page").eq(idx);
-        $currentPage.addClass("active");
+            stat = 0;
 
-        var $header = $("header"); 
-
-    if (idx >= 1) {
-        // 2번째 페이지부터 적용할 스타일
-        $header.css({
-            "background-color": "rgba(255, 255, 255, 0.5)", // 흰색 70% 투명도
-         
-            "transition": "all 0.5s"                       // 변할 때 부드럽게
-        });
-    } else {
-        // 1번째 페이지(메인)로 돌아오면 다시 원래대로 (보통 투명)
-        $header.css({
-            "background-color": "transparent",
-            "backdrop-filter": "none"
-        });
-    }
-
-        if ($currentPage.attr("id") === "brand1") {
-            // 로고 애니메이션 (백틱 적용)
-            $(".brand-logo").css({ "opacity": 0 });
-            $(".brand-logo").stop().animate({ "opacity": 1 }, {
-                duration: 1500
-            });
-
-            // 설명글 애니메이션 (백틱 적용)
-            $(".brand-des, .first-title").css({ "opacity": 0, "transform": "translateY(20px)" });
-            $(".brand-des, .first-title").each(function(index) {
-                $(this).stop().delay(900 + (index * 300)).animate({ "opacity": 1 }, {
-                    duration: 600,
-                    step: function(now) {
-                        var y = 20 - (20 * now); 
-                        $(this).css("transform", `translateY(${y}px)`);
-                    }
+            if (pageCount === 0) {
+                // 0번 페이지: 완전 투명
+                $("header").css({
+                    "backgroundColor": "rgba(255, 255, 255, 0)",
+                    "transition": "0.5s"
                 });
-            });
+            }
+            else {
+                $("header").css({
+                    "backgroundColor": "rgba(255, 255, 255, 0.4)",
+                    "transition": "0.5s"
+                });
+            }
+
+            // [Brand 3 또는 Brand 6 페이지 도착 시]
+            if (pageCount === 2 || pageCount === 5) { // ||는 '또는(OR)' 이라는 뜻
+
+                var target; // 타겟을 담을 빈 그릇
+
+                if (pageCount === 2) {
+                    target = "#brand3"; // 2번이면 3번 브랜드를
+                } else {
+                    target = "#brand6"; // 아니면(5번이면) 6번 브랜드를 그릇
+                }
+
+                // target(그릇)에 담긴 애들만 요리합니다.
+                $(target + " .w-list").css({ "opacity": 0 });
+                $(target + " .w-list dt, " + target + " .w-list dd").css({
+                    "opacity": 0,
+                    "marginTop": "20px"
+                });
+
+                $(target + " .w-list").stop().animate({ "opacity": 1 }, 800, function () {
+                    $(target + " .b-tit").stop().animate({ "opacity": 1, "marginTop": "0px" }, 700);
+                    $(target + " .b-sub").stop().delay(300).animate({ "opacity": 1, "marginTop": "0px" }, 700);
+                    $(target + " .b-desc").stop().delay(600).animate({ "opacity": 1, "marginTop": "0px" }, 700);
+                });
+
+
+            }
+
+
+            // [Brand 4, 5, 7 페이지 도착 시]
+            if (pageCount === 3 || pageCount === 4 || pageCount === 6) {
+                var targetId;
+                if (pageCount === 3) targetId = "#brand4";
+                else if (pageCount === 4) targetId = "#brand5";
+                else targetId = "#brand7";
+
+                // 1. 초기 상태 설정 (글자들만 숨기고 아래로 20px 내림)
+                $(targetId + " .b-tit, " + targetId + " .b-sub, " + targetId + " .b-desc").css({
+                    "opacity": 0,
+                });
+
+                $(targetId + " .b-tit").stop().animate({ "opacity": 1 }, 1000, function () {
+                    $(targetId + " .b-sub").stop().animate({ "opacity": 1}, 700);
+                    $(targetId + " .b-desc").stop().delay(800).animate({ "opacity": 1 }, 700);
+                });
+            }
+
+            // --- 각 페이지 도착 시 애니메이션 ---
+
+            // A. Brand 1 페이지 (0번)
+            if (pageCount === 0) {
+                // 1. 초기 상태 설정
+                $(".logo-box").css({ "opacity": 0 });
+                $(".first-title, .brand-des").css({ "opacity": 0, "marginTop": "30px" });
+
+
+                $(".logo-box").stop().animate({ "opacity": 1 }, 1900);
+
+
+                $(".first-title").stop().delay(1600).animate({
+                    "opacity": 1,
+                    "marginTop": "0px"
+                }, 800);
+
+                $(".brand-des").stop().delay(1700).animate({
+                    "opacity": 1,
+                    "marginTop": "0px"
+                }, 900);
+            }
+            // B. Brand 2 페이지 (1번)
+            if (pageCount === 1) {
+                clearInterval(autocall);
+                autocall = setInterval(flow, 20);
+            } else {
+                clearInterval(autocall);
+            }
+
+
+
+        });
+
+
+
+
+    });
+
+    // [2] 접속 시 0번 페이지 효과를 위해 강제 실행
+    $(document).trigger('mousewheel');
+
+    // [3] 무한 흘러가는 슬라이드 함수 (Brand 2용)
+    function flow() {
+        moveNum++;
+
+        var slideWrap = $(".slide-wrap");
+        var boxWidth = $(".slide-box").first().outerWidth(true);
+
+        if (moveNum > boxWidth) {
+            // 첫 번째 박스를 맨 뒤로 보내고 위치 초기화
+            slideWrap.append($(".slide-box").first()).css('left', 0);
+            moveNum = 0;
+        } else {
+            // 왼쪽으로 이동
+            slideWrap.css({ left: -moveNum });
         }
     }
-});
 
-/* brand 2 jquery */
+    // [4] 슬라이드 박스 마우스 호버 (캡션 및 정지)
+    $(".slide-box").hover(function () {
+        // [1] 마우스를 올렸을 때: 무조건 멈춤!
+        clearInterval(autocall);
 
-$(document).ready(function() {
-    var $wrap = $(".slide-wrap");
-    var $boxes = $(".slide-box");
-    
-    // 무한 루프를 위해 복제
-    $wrap.append($boxes.clone());
-
-    function startFlow() {
-        // 1. 현재 위치값 가져오기 (리셋 상황 대비)
-        var currentLeft = parseFloat($wrap.css("left"));
-        var oneSetWidth = $boxes.length * $boxes.outerWidth(true);
-
-        // 2. 남은 거리 계산 (끝까지 가기 위해 남은 너비)
-        var remainingDistance = oneSetWidth + currentLeft;
-        
-        // 3. 남은 거리에 비례한 시간 계산 (속도를 일정하게 유지하기 위함)
-        // 전체 30초 중 남은 비율만큼만 시간 할당
-        var duration = (remainingDistance / oneSetWidth) * 30000;
-
-        // stop(true, true)로 큐를 비우고 애니메이션 실행
-        $wrap.stop(true, true).animate({
-            "left": `-${oneSetWidth}px`
-        }, duration, "linear", function() {
-            $(this).css("left", "0");
-            startFlow();
-        });
-    }
-
-    // 초기 실행
-    startFlow();
-
-    // 마우스 이벤트 제어
-    $wrap.on("mouseenter", function() {
-        $(this).stop(true, false); // 위치는 그대로 두고 애니메이션만 정지
+    }, function () {
+        // [2] 마우스를 뗐을 때: Brand 2 페이지일 때만 다시 시작!
+        if (pageCount === 1) {
+            //  중복 방지를 위해 지우고 시작하는 게 안전
+            clearInterval(autocall);
+            autocall = setInterval(flow, 20);
+        }
     });
 
-    $wrap.on("mouseleave", function() {
-        startFlow(); // 멈춘 시점부터 다시 계산해서 시작
-    });
+
+
 });

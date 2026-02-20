@@ -12,12 +12,12 @@ main .research-section {
 .research-section .content-wrapper {
     height: 500px;
     /*  이미지의 높이가 원래 500px 이라서 고정의 값을 줌 */
-    
+
     width: 100%;
 }
 
 .research-section .content-wrapper .text-area {
-    
+
     width: 50%;
     height: 100%;
     padding: 150px 0;
@@ -35,6 +35,8 @@ main .research-section {
 
 .content-wrapper .text-area p {
     line-height: 2rem;
+    font-size: 18px;
+      
 }
 
 .research-section .content-wrapper .image-area {
@@ -51,7 +53,7 @@ main .research-section {
 
 .tabmenu {
     width: 100%;
-    margin-bottom: 50px;
+    margin-bottom: 80px;
 }
 
 .tabmenu ul::after {
@@ -67,12 +69,13 @@ main .research-section {
     /* 가로로 나열하기 위해 사용 */
     text-align: center;
     /* outline: 2px solid pink; */
+
 }
 
 .tabmenu ul li a {
     /* 1. block 대신 inline-block을 써서 글자 크기만큼만 영역을 갖게 함 */
     display: inline-block;
-    font-size: 20px;
+    font-size: 26px;
     text-decoration: none;
     color: #999;
     border-bottom: 3px solid transparent;
@@ -80,36 +83,90 @@ main .research-section {
 
 /* 3. 선택된 메뉴(on)의 a 태그에만 선 색상을 줌 */
 .tabmenu ul li.on a {
-    color: #000;
+    color: #5E675E;
     font-weight: bold;
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid #5E675E;
     /* 글자 길이만큼만 선이 생김 */
 }
 
 
 
-.tab-box {
+
+.all-box {
     /* background-color: aquamarine; */
+    margin-bottom: 150px;
 }
 
-.tab-box .con1 .sig-collection {
+
+/* 1. 일단 모든 박스를 안 보이게 숨깁니다. */
+.all-box>div {
+    display: none;
+}
+
+/* 2. 그중에서 .on 클래스가 붙은 박스만 보이게 합니다. */
+/* 이때 <div>는 원래 블록 요소이지만, 
+   위에서 display: none으로 죽여놨기 때문에 다시 살려내기 위해 
+   display: block을 명시해 주는 것입니다. */
+.all-box>div.on {
+    display: block;
+}
+
+/* **********************box1**************************************** */
+#box1 {
+    width: 100%;
+    position: relative;
+    /* 버튼 배치의 새로운 기준점 */
+    box-sizing: border-box;
+}
+
+
+
+.all-box .con1 .sig-collection {
     text-align: center;
     /*  outline: 2px solid tomato; */
 }
 
 .con1 .sig-collection h2 {
-    font-size: 30px;
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: #354230;
 }
 
-.con1 .sig-collection p {}
+.con1 .sig-collection p {
+    font-size: 20px;
+    font-family: "Noto Serif KR", serif;
+    color: #4F4A45;
+}
 
+#box1 .btn-group a {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+}
+
+#box1 .btn-group .prev {
+    left: -60px;
+}
+
+/* appear 박스 바깥 왼쪽에 배치 */
+#box1 .btn-group .next {
+    right: -60px;
+}
+
+/* appear 박스 바깥 오른쪽에 배치 */
+
+#box1 .btn-group img {
+    width: 27px;
+}
 
 
 /* 창문 역할 */
 .con1 .appear {
     width: 100%;
-    /* overflow: hidden; */
-    position: relative;
+    overflow: hidden;
+
 }
 
 
@@ -133,25 +190,18 @@ main .research-section {
 
 /* 기차 한 칸 (개별 슬라이드) */
 .appear .slider-track .slide {
-    width: 33.3333%;
+    width: 33.333333%;
     /* 300% 트랙의 1/3이므로 화면에 100%로 보임 */
     float: left;
     /* 왼쪽으로 나란히 정렬 */
     box-sizing: border-box;
     /* 패딩이 있어도 너비가 깨지지 않게 방어 */
-   /*  background-color: azure; */
+    background-color: #fff;
     margin-top: 40px;
-    padding-left: 30px;
+    /* padding-left: 30px; */
 
 }
 
-.slide .upbox-wrap {
-
-    width: 100%;
-
-
-
-}
 
 .slide .upbox-wrap::after {
     content: "";
@@ -187,13 +237,7 @@ main .research-section {
     clear: both;
 }
 
-/* 2. 이미지 박스 (크기 조절) */
-.upbox-wrap .img-upbox {
-    width: 40%;
-    /* 이미지를 전체의 40%로 줄임 */
-    float: left;
-    /* 왼쪽 배치 */
-}
+
 
 .upbox-wrap .img-upbox img {
     width: 100%;
@@ -202,7 +246,7 @@ main .research-section {
     display: block;
 }
 
-/* 3. 설명 박스 (수직 중앙 정렬 및 % 배치) */
+/* 3. 설명 박스  */
 .upbox-wrap .info-wrap {
     position: absolute;
     top: 50%;
@@ -212,36 +256,52 @@ main .research-section {
     transform: translateY(-50%);
     /* 정확한 수직 중앙 보정 */
 
-    width: 50%;
+
     /* 설명글 영역 너비 */
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
+
+    /*  outline: 2px solid blue; */
+    width: 50%;
 }
 
 .upbox-wrap .info-wrap .product-text {
     /* outline: 2px solid red; */
+    margin-bottom: 60px;
 }
 
 
 .info-wrap .product-text h3 {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    font-family: "Cormorant Garamond", serif;
     margin-bottom: 20px;
+    color: #222222;
+    letter-spacing: 0.1em;
 }
 
 .info-wrap .product-text .summary {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     margin-bottom: 18px;
+
+    font-weight: 500;
+    letter-spacing: -0.05em;
+    color: #767676;
 }
 
 .info-wrap .product-text .description {
-    font-size: 1.1rem;
-    margin-bottom: 40px;
+    font-size: 1.2rem;
+    /* margin-bottom: 40px; */
+    color: #4A4A4A;
+    font-weight: 400;
+    line-height: 2rem;
+    /* font-family: "Noto Serif KR", serif; */
 }
 
 .info-wrap .product-status {
-    /* outline: 2px solid tomato;  *//* 영역 확인용 */
+    /* outline: 2px solid tomato;  */
+    /* 영역 확인용 */
     width: 100%;
     position: relative;
-    
+
     box-sizing: border-box;
 }
 
@@ -254,26 +314,47 @@ main .research-section {
 /* Season 박스 */
 .product-status .status-item {
     float: left;
-    width: 40%;         /* 50%에서 40%로 줄여서 옆 박스 공간 확보 */
-    margin-right: 5%;   /* 고정px 대신 %로 주는 것이 안전합니다 */
-    position: relative; /* 화살표의 기준점 */
+    width: 40%;
+    /* 50%에서 40%로 줄여서 옆 박스 공간 확보 */
+    margin-right: 5%;
+    /* 고정px 대신 %로 주는 것이 안전합니다 */
+    position: relative;
+    /* 화살표의 기준점 */
 }
+
+.product-status .status-item h4 {
+    font-size: 18px;
+    margin-bottom: 14px;
+}
+
 
 /* Character 박스 (추가) */
 .product-status .character-item {
     float: left;
-    width: 50%;         /* 40(시즌) + 5(여백) + 50(캐릭터) = 95%로 안전하게 배치 */
+    width: 50%;
+    /* 40(시즌) + 5(여백) + 50(캐릭터) = 95%로 안전하게 배치 */
 }
-.season-gauge {
-   
+
+.product-status .character-item h4 {
+    font-size: 18px;
+    margin-bottom: 14px;
 }
+
+.product-status .character-item p {
+    font-size: 18px;
+    color: #4A4A4A;
+}
+
+.season-gauge {}
+
 /* 계절 라벨 간격 벌리기 */
 .season-labels {
     list-style: none;
     padding: 0;
-    margin: 8px 0 20px 0; /* 아래 마진을 30px로 키워 선과 벌림 */
+    margin: 8px 0 20px 0;
+    /* 아래 마진을 30px로 키워 선과 벌림 */
     width: 100%;
-   
+
 }
 
 
@@ -284,7 +365,8 @@ main .research-section {
     font-size: 16px;
     color: #333;
     text-align: center;
-    position: relative; /* 가상요소 원의 기준점 */
+    position: relative;
+    /* 가상요소 원의 기준점 */
 }
 
 /* 원(포인터) 디자인 */
@@ -292,22 +374,236 @@ main .research-section {
     content: "";
     position: absolute;
     /* li 내부 글자 아래에서 gauge-line까지의 거리를 조절하세요 */
-    bottom: -26px; 
+    bottom: -26px;
     left: 50%;
-    transform: translateX(-50%); /* 정확한 중앙 정렬 */
+    transform: translateX(-50%);
+    /* 정확한 중앙 정렬 */
     width: 10px;
     height: 10px;
-    background-color: #1B3322; /* 강조색 */
+    background-color: #1B3322;
+    /* 강조색 */
     border-radius: 50%;
     z-index: 10;
 }
 
 /* 막대기 위치 */
 .gauge-line {
-    position: relative;   
+    position: relative;
     width: 100%;
     height: 1px;
     background: #999;
+
+}
+
+.downbox-wrap {
+    /*   outline: 2px solid red; */
+
+    width: 100%;
+    position: relative;
+    /* 자식 .scent-notes의 기준점 */
+
+}
+
+.downbox-wrap::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.downbox-wrap .img-downbox {
+    float: left;
+    width: 700px;
+    margin-right: 100px;
+
+}
+
+
+.downbox-wrap .img-downbox img {
+    width: 100%;
+    display: block;
+}
+
+/* 오른쪽 텍스트 박스: 수직 중앙 정렬 적용 */
+.downbox-wrap .scent-notes {
+    position: absolute;
+    top: 50%;
+    /* 부모 높이의 50% 지점으로 이동 */
+    left: 48%;
+    transform: translateY(-50%);
+    /* 위에서 배운 대로 자기 높이의 절반만큼 보정 */
+    width: 50%;
+    /* 오른쪽 나머지 절반 차지 */
+    /* box-sizing: border-box; */
+
+}
+
+
+/* 1. 각 줄(Top, Middle, Bottom) 사이의 간격 */
+.note-item {
+    margin-bottom: 25px;
+    /* 줄 사이를 넉넉히 띄움 */
+}
+
+.note-item:last-child {
+    margin-bottom: 0;
+    /* 마지막 줄은 아래 마진 제거 */
+}
+
+/* 2. 타이틀(Top 등)의 설정 */
+.note-item .note-title {
+    display: inline-block;
+    /* 마진과 너비를 적용하기 위해 필요 */
+    width: 70px;
+    /* 타이틀 영역 너비를 고정하면 콜론(:) 위치가 세로로 정렬됨 */
+    margin-right: 20px;
+    /* 타이틀과 향료 이름 사이의 간격 */
+    font-weight: bold;
+    color: #333;
+    vertical-align: top;
+    /* 글자가 길어져서 줄바꿈될 때 상단 기준 정렬 */
+}
+
+/* 3. 향료 이름 텍스트 */
+.note-item .note-text {
+    display: inline-block;
+    vertical-align: top;
+    color: #666;
+    /* width를 안 쓰기로 하셨으므로 글자 길이에 따라 자동으로 늘어남 */
+}
+
+/*********************************************** box2
+******************************************************************* */
+#box2.con2 {
+    width: 100%;
+    padding: 0 100px;
+    box-sizing: border-box;
+    margin-top: 100px;
+   
+
+}
+
+.con2 .frag-intro {
+    /*  outline: 2px solid orange; */
+   margin-left: 16px;
     
 }
 
+.con2 .frag-intro h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 32px;
+    margin-bottom: 8px;
+    color: #354230;
+}
+
+.con2 .frag-intro p {
+    color: #4F4A45;
+    font-size: 20px;
+      font-family: "Noto Serif KR", serif;
+}
+
+
+.con2 .frag-list {
+    margin-top: 80px;
+}
+
+.con2 .frag-list .frag-item {
+    margin-bottom: 110px;
+    height: 450px;
+   
+    /* outline: 2px solid red; */
+
+    position: relative;
+}
+
+.frag-item .frag-imgbox {
+    width: 50%;
+    height: 100%;
+    
+   
+    position: relative;
+
+   display: none;
+}
+
+.frag-item .frag-imgbox img {
+    height: 100%;
+    width: 100%;
+    display: block;
+    border-radius: 40px;
+}
+
+.frag-item .frag-textbox {
+    height: 100%;
+    width: 40%;
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+   
+
+}
+
+/* 짝수번째 */
+.frag-item.even .frag-imgbox {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    
+
+}
+
+.frag-item.even .frag-textbox {
+    right: 57%;
+}
+
+.frag-textbox h3 {
+    font-size: 32px;
+    margin-bottom: 4px;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 700;
+    color: #222222;
+
+}
+
+.frag-textbox .frag-subtitle {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #555D46;
+}
+
+.frag-textbox .frag-main {
+    margin-bottom: 14px;
+
+}
+
+.frag-textbox .frag-main strong {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #937D64;
+   
+}
+
+.frag-textbox .frag-main p {
+ 
+}
+
+
+.frag-textbox .frag-desc {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    word-break: keep-all;
+    color: #4A5548;
+    font-weight: 450;
+    letter-spacing: 0.01em;
+}
+
+.frag-textbox .signature-frag {
+    margin-top: 20px;
+    color: #9B9B9B;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+}

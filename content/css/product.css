@@ -1,0 +1,344 @@
+/* product.css */
+
+main {}
+
+main .main-visual {
+    width: 95%;
+    /* .common css */
+    margin: 60px auto 150px;
+    /* outline: 2px solid red; */
+
+    /* [중요] 부모를 기준점으로 잡습니다. */
+    position: relative;
+}
+
+main .photo-box {
+    /* 이미지는 float로 자리를 차지하게 두어 부모의 높이를 만듭니다. */
+    width: 50%;
+    float: left;
+    /* outline: 2px solid teal; */
+}
+
+main .photo-box img {
+    width: 100%;
+    display: block;
+}
+
+.main-visual .txt-box {
+    /* [핵심] float 대신 절대 위치를 사용합니다. */
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    /* 위아래를 0으로 고정하면 부모 높이만큼 꽉 찹니다. */
+
+    width: 50%;
+    /* 오른쪽 절반을 차지 */
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.5);
+
+}
+
+
+.txt-box .product-intro {
+    position: absolute;
+    /* 1. 가로 세로 중앙의 기준점 잡기 */
+    top: 50%;
+    left: 50%;
+    /* 2. 요소의 크기만큼 다시 반대 방향으로 끌어올리기 */
+    /* 이 수치는 박스 크기에 상관없이 항상 정중앙을 유지해줍니다. */
+    transform: translate(-50%, -50%);
+    /* outline: 2px solid blue; */
+}
+
+.txt-box .product-intro h2 {
+    font-size: 30px;
+    color: #1B3322;
+    margin-bottom: 20px;
+}
+
+.txt-box .product-intro p {
+    line-height: 2rem;
+    font-size: 18px;
+}
+
+
+.collect-list {}
+
+.collect-list .collect-title {
+    /*  outline: 2px solid green; */
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.collect-list .collect-title h2 {
+    font-size: 30px;
+    margin-bottom: 16px;
+}
+
+.collect-list .collect-title p {
+    font-family: "Noto Serif KR", serif;
+    color: #4F4A45;
+    font-size: 18px;
+    font-weight: 400;
+    
+}
+
+
+.collect-list .theme-item {
+    /*    outline: 2px solid darkseagreen; */
+    margin-bottom: 100px;
+}
+
+/* 1. 공통 부모 설정 */
+.collect-list .theme-item {
+    position: relative;
+}
+
+/* 2. 공통 Clearfix (모든 섹션의 푸터 밀림 방지) */
+.collect-list .theme-item::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* 3. 로고를 넣고 싶은 섹션에만 각각 선언 */
+
+/* --- Woody --- */
+.theme-item.woody::before {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: url('../images/product/nonfiction_logo 1.png') no-repeat center / contain;
+    opacity: 0.1;
+    z-index: -9999;
+    pointer-events: none;
+    bottom: -159px; 
+    left: -23px;
+}
+
+/* --- Floral --- */
+.theme-item.floral::before {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: url('../images/product/nonfiction_logo 1.png') no-repeat center / contain;
+    opacity: 0.1;
+    z-index: -9999;
+    pointer-events: none;
+    bottom: -218px;
+    right: 0px;
+}
+
+/* --- Citrus --- */
+.theme-item.citrus::before {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: url('../images/product/nonfiction_logo 1.png') no-repeat center / contain;
+    opacity: 0.1;
+    z-index: -9999;
+    pointer-events: none;
+    bottom: -195px;
+    left: -15px;
+}
+
+/* --- Musk --- */
+/* 아무것도 적지 않으면 로고가 나타나지 않습니다. 깔끔하죠! */
+.collect-list .theme-item .theme-wrap {
+    /* background-color: aquamarine; */
+    width: 100%;
+    position: relative;
+}
+
+.theme-item .theme-wrap .theme-txt {
+    /* outline: 2px solid red; */
+    width: 35%;
+    float: left;
+}
+
+.theme-item .theme-wrap .theme-txt h3 {
+    font-size: 35px;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 900;
+    margin-bottom: 10px;
+   color:  #222222;
+
+   position: relative; 
+    display: inline-block; /* 배경 박스가 글자 너비만큼만 생기도록 설정 */
+    z-index: 0; /* 글자가 배경보다 위로 오게 함 */
+
+}
+
+
+.theme-item .theme-wrap .theme-txt h3::before {
+    content: "";
+    position: absolute;
+    bottom: 4px;    /* 위치 조정 */
+    left: -4px;     /* 왼쪽 여백 */
+    width: 105%;    /* 글자보다 살짝 넓게 */
+    height: 15px;   /* 피그마처럼 하단만 살짝 칠해지는 높이 */
+    z-index: -1;
+    opacity: 0.8;   /* 배경과 자연스럽게 섞이도록 투명도 조절 */
+}
+
+/* 2. 각 섹션별 개별 하이라이트 색상 (추천 팔레트) */
+
+/* Woody: 짙은 흙과 나무 느낌의 브라운 */
+.woody .theme-txt h3::before {
+    background-color: #D2C5B6; 
+}
+
+/* Floral: 말린 장미나 은은한 꽃잎 느낌의 핑크베이지 */
+.floral .theme-txt h3::before {
+    background-color: #E9D7D3; 
+}
+
+/* Citrus: 싱그러운 잎사귀나 열매 느낌의 연한 그린/옐로우 */
+.citrus .theme-txt h3::before {
+    background-color: #DAE2D3; 
+}
+
+/* Musk: 깨끗하고 부드러운 살결 느낌의 그레이시 베이지 */
+.musk .theme-txt h3::before {
+    background-color: #E2E2E2; 
+}
+
+.theme-item .theme-wrap .theme-txt p {
+
+    color: #2D4236;
+
+    font-weight: 450;
+    font-size: 18px;
+
+    word-break: keep-all;
+}
+
+.theme-item .theme-wrap .theme-btn {
+    float: right;
+    margin-right: 30px;
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translateY(-50%);
+}
+
+
+
+
+
+
+.theme-item .theme-wrap .theme-btn .btn-view {
+    font-size: 18px;
+    padding: 4px 4px;
+    box-sizing: border-box;
+    border: 1px solid #1B3322;
+    /* 아까 정한 짙은 녹색 */
+    border-radius: 20px;
+    /* 알약 모양을 만들려면 높이의 절반 이상을 줍니다 */
+
+}
+
+.theme-item .theme-wrap .theme-btn .btn-view:hover {
+    background-color: #2D4236;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+.theme-item .slider {
+    width: 100%;
+    max-width: 1720px;
+    margin: 0 auto;
+    overflow: hidden;
+    /*    outline: 2px solid yellowgreen; */
+    margin-top: 30px;
+   
+}
+
+.slider .container {
+    /* 사진 5장(30%*5) + 마진 4개(5%*4) = 총 170% */
+    width: 170%;
+    position: relative; /* [필수] 좌표 이동을 위해 추가 */
+    left: 0;
+}
+
+.slider .container .product-grid {
+  
+   
+}
+
+
+
+.slider .container .product-grid li {
+    float: left;
+    /* 부모(170%) 대비 창문(100%)의 30% 크기를 가지기 위한 계산 */
+    width: calc(100% * 30 / 170);
+    text-align: center;
+ 
+}
+
+
+.slider .container .product-grid li~li {
+    /* 부모(170%) 대비 창문(100%)의 5% 간격을 가지기 위한 계산 */
+    margin-left: calc(100% * 5 / 170);
+}
+
+.product-grid li .pro-imgbox {
+    margin-bottom: 20px;
+       overflow: hidden;
+}
+
+.product-grid li .pro-imgbox img {
+    width: 100%;
+    display: block;
+    transition: all 0.6s;
+}
+
+.slider .container .product-grid li .pro-imgbox:hover img {
+    transform: scale(1.2);
+    
+}
+
+.product-grid li .pro-txtbox {}
+
+.product-grid li .pro-txtbox h4 {
+    margin-bottom: 8px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: rgb(45, 66, 54);
+}
+
+.product-grid li .pro-txtbox p {
+    font-family: "Noto Serif KR", serif;
+    font-weight: 500;
+}
+
+/* 화살표 버튼  */
+.slide-btn {
+    /* outline: 2px solid sandybrown; */
+    text-align: right;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+.slide-btn .btn-prev,
+.slide-btn .btn-next {
+    /* 공통 CSS의 block을 덮어씌워서 가로로 나열합니다 */
+    display: inline-block;
+    width: 20px;
+    vertical-align: middle;
+    margin-right: 8px;
+
+}
+
+
+.slide-btn a img {
+    /* 원래 크기보다 작게, 예를 들어 40px 정도로 조절해보세요 */
+    width: 100%;
+    display: block;
+    /* 하단 미세 공백 제거 */
+}

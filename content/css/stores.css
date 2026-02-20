@@ -1,0 +1,168 @@
+   /* stores.css */
+   .store-total {
+    padding: 20px 0 100px 0;
+    box-sizing: border-box;
+   }
+   .store-intro {
+
+     /* outline: 2px solid red; */
+     margin: 0 auto;
+     text-align: center;
+     padding-top: 20px;
+     background: url(../images/stores/nonfiction_halflogo.png) no-repeat center bottom / 250px;
+     padding-bottom: 140px;
+   }
+
+   .store-intro h2 {
+     font-family: 'Cormorant Garamond', serif;
+     font-size:30px;
+     font-weight: 700;
+     margin-bottom: 10px;
+     color: #1B3322;
+   }
+
+   .store-intro p {
+     font-family: "Noto Serif KR", serif;
+     font-size: 20px;
+   }
+
+   .container {}
+
+   .container .tabmenu {
+     text-align: center;
+     
+     margin: 40px 0 80px 0;
+   }
+
+   .container .tabmenu ul {}
+
+   .container .tabmenu ul li {
+     font-size: 22px;
+     font-family: "Noto Serif KR", serif;
+     font-weight: 400;
+     display: inline-block;
+     margin: 20px 100px;
+    
+     text-align: center;
+
+    
+     color: #444;
+   }
+
+
+   .container .tabmenu ul li.on {
+     border-bottom: 1px solid black;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+   }
+
+   .container .tabmenu ul li.on a {}
+
+
+   .container .content-box {
+     /* background-color: aquamarine; */
+
+   }
+
+   /* 기본 숨김 처리 */
+.content-box > div {
+    display: none;
+}
+.content-box > div.active {
+    display: block;
+}
+
+/* 상단 정보 영역 (이미지+텍스트) */
+.store-info-wrap .info-top::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.store-info-wrap .info-top {
+  position: relative; /* 자식인 store-txt의 기준점이 됩니다. */
+    width: 100%;
+
+    padding: 0 30px;
+    box-sizing: border-box;
+
+    
+}
+
+
+.store-info-wrap .info-top .store-imgbox {
+    width: 50%;
+    float: left;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.store-info-wrap .info-top .store-imgbox img {
+    width: 100%;
+    display: block;
+}
+
+.store-info-wrap .info-top .store-txt {
+    width: 50%;
+    float: left;
+    padding-left: 50px;
+    box-sizing: border-box;
+
+    position: absolute; /* 부모인 .info-top을 기준으로 움직입니다. */
+    top: 50%;           /* 기준점의 위에서 50% 지점으로 일단 내려옵니다. */
+    right: 0;           /* 오른쪽 50% 영역에 고정합니다. */
+
+    transform: translateY(-50%);
+}
+.store-txt h3 {
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 18px;
+  color: #1B3322;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+/* 아이콘 텍스트 정렬 */
+.store-txt ul li {
+    margin-bottom: 15px;
+    overflow: hidden; /* float 해제 대용 */
+}
+
+
+.store-txt ul li img {
+    float: left;
+    margin-right: 15px;
+    width: 40px;
+}
+.store-txt ul li p {
+    float: left;
+    line-height: 40px;
+    font-size: 20px;
+    color: #555555;
+}
+
+.store-info-wrap .store-map {
+    clear: both;
+    width: 100%;
+   /*  outline: 2px solid tomato; */
+    margin-top: 80px;
+}
+.store-info-wrap .store-map h4 {
+  width: 50%;
+  margin: 0 auto 20px;
+  /* outline: 2px solid forestgreen; */
+  font-size: 24px;
+  font-weight: 400;
+    color: #1B3322;
+
+}
+
+.store-map iframe {
+    width: 50%;
+    height: 500px;
+    border: none;
+    display: block;
+    margin: 0 auto;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+

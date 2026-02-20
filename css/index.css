@@ -17,6 +17,8 @@ body {
 
 
 
+
+
 /* body의 가상 요소로 배경 로고 구현 */
 body::before {
     content: "";
@@ -86,9 +88,10 @@ header {
    
 }
 
+
 /* 스크롤에 따라 변경될 header 디자인 */
 header.on {
-    background-color: rgba(253, 248, 247, 0.9);
+    background-color:rgba(245, 240, 235, 0.8);
     border-bottom: 1px solid rgba(255, 255, 255, 0);
 }
 

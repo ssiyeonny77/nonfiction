@@ -1,0 +1,281 @@
+.total-prod .top-name {
+    font-size: 28px;
+    font-weight: 500;
+    margin: 20px 0 20px 0;
+}
+
+
+.prod-wrap {
+    position: relative;
+    /* 기준점 */
+    min-height: 600px;
+    /* 이미지 높이에 맞춰 부모 높이를 확보하기*/
+    margin-bottom: 25%;
+}
+
+.prod-wrap::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.prod-wrap .prod-card {
+    float: left;
+    width: 55%;
+    /* .prod-txtbox 와 .prod-card 의 60%와 38%*/
+    /* 전체 화면에서 이미지 영역이 차지할 넓이 */
+    /*  outline: 2px solid red; */
+}
+
+.prod-wrap .prod-card .slider {
+    float: left;
+    width: 20%;
+    /* 썸네일 리스트의 고정 넓이 */
+    list-style: none;
+    padding-right: 10px;
+    box-sizing: border-box;
+    /* outline: 2px solid green; */
+}
+
+.slider .thumb {
+    cursor: pointer;
+    /* 마우스 손가락 모양 */
+    transition: 0.3s;
+    /* 부드러운 변화 */
+    opacity: 0.6;
+    /* 기본은 살짝 흐리게 */
+}
+
+.slider .thumb.on,
+.slider .thumb:hover {
+    opacity: 1;
+    /* 활성화되거나 마우스 올리면 선명하게 */
+}
+
+.prod-wrap .prod-card .thumb-item {
+    margin-bottom: 6px;
+    width: 100%;
+}
+
+.prod-wrap .prod-card .thumb-item img {
+    width: 100%;
+    display: block;
+}
+
+.prod-wrap .prod-card .prod-visual {
+    float: right;
+    width: 80%;
+
+}
+
+.prod-wrap .prod-card .prod-visual img {
+    width: 100%;
+    display: block;
+    /* 너무 커지지 않게 제한 */
+    margin: 0 auto;
+
+}
+
+.prod-wrap .prod-txtbox {
+    position: absolute;
+    top: 30%;
+    transform: translateY(-50%);
+
+    right: 0;
+    width: 45%;
+
+
+    padding: 0 50px;
+    box-sizing: border-box;
+
+}
+
+.prod-txtbox .item-name {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.prod-txtbox .item-info {
+    /*  outline: 2px solid brown; */
+}
+
+.prod-txtbox .item-info .description {
+    font-size: 18px;
+    color: #777;
+    margin-bottom: 20px;
+    font-family: "Noto Serif KR", serif;
+}
+
+.prod-txtbox .item-info .material {
+    margin-bottom: 14px;
+}
+
+.prod-txtbox .item-info .size-box {}
+
+.prod-txtbox .item-info .size-box .size-title {
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.size-box .size-numb span {
+    display: inline-block;
+    /* 마우스를 올리면 손가락 모양으로 변함 */
+    /* 색이 부드럽게 변함 */
+    font-size: 16px; 
+     color: #000;
+    font-weight: bold;
+}
+
+
+.use-box::before {
+    content: "";
+    position: absolute;
+    top: -43%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 300px;
+
+    /* background: [색상] [이미지] [반복여부] [위치] / [크기] */
+    background: url('../img/woody-bodylotion/nonfiction_logo.png') no-repeat center / contain;
+
+    animation: rotate_logo 30000ms linear infinite;
+}
+
+
+/* 회전 동작 정의 */
+@keyframes rotate_logo {
+    from {
+        /* 기존 위치 중앙 정렬(translateX)을 유지하면서 0도부터 시작 */
+        transform: translateX(-50%) rotate(0deg);
+    }
+
+    to {
+        /* 360도까지 회전 */
+        transform: translateX(-50%) rotate(360deg);
+    }
+}
+
+.use-box {
+      background-color: #FAF9F6;
+    width: 100%;
+    /* 텍스트 박스와 통일감 */    
+    position: relative;
+    /* ::before의 기준점이 됩니다 */
+    margin-bottom: 160px;
+}
+
+
+.use-box .viewer {
+    width: 50%;
+    height: 860px; /* 예제의 .viewer처럼 높이 고정 필수 */
+    float: left;
+    position: relative; /* 슬라이드들의 기준점 */
+    overflow: hidden;
+}
+.use-box .viewer .viewer-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none; /* 일단 모두 숨김 */
+}
+
+/* 첫 번째 슬라이드만 보이게 설정 */
+.use-box .viewer .viewer-slide.active {
+    display: block;
+    z-index: 2; /* 현재 보이는 건 위로 */
+}
+.use-box .viewer .viewer-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지가 박스에 꽉 차게 조절 */
+    display: block;
+}
+
+
+
+/* --- 텍스트 영역 (오른쪽 50%) --- */
+.use-box .use-totaltxt {
+    width: 50%;
+   
+    float: right;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    /* 오른쪽 절반 영역에 위치해야 하므로 */
+    transform: translateY(-50%);
+    /* 위아래 중앙 */
+
+   /* [수정] 중앙 정렬 해제 및 왼쪽 정렬 설정 */
+    text-align: left; 
+    
+    /* [수정] 왼쪽 여백을 충분히 주어 이미지와 거리를 벌립니다 */
+    padding: 0 50px 0 100px; 
+    
+    box-sizing: border-box; /* 패딩이 박스 너비에 포함되도록 설정 */
+   /*  outline: 2px solid red; */
+}
+
+.use-how, .use-texture {
+    margin-bottom: 40px;
+}
+
+.use-totaltxt h3 {
+     font-size: 22px;
+    font-weight: normal;
+    margin-bottom: 14px;
+}
+
+.use-totaltxt p {
+    /* 1. 줄 간격 (기본값은 1~1.2 정도입니다) */
+    line-height: 1.8;
+    /* 1.8배에서 2배 사이가 가장 여유롭고 고급스러워요 */
+    font-size: 20px;
+    /* 2. 자간 (글자 사이 간격) */
+    letter-spacing: -0.02em;
+    /* 살짝 좁히면 훨씬 정갈해 보입니다 */
+}
+
+
+.fragrance-box {
+    width: 100%;
+   margin-bottom: 100px;
+    text-align: center; /* 내부 텍스트들을 중앙 정렬 */
+}
+
+/* 이미지 박스: 여기서 크기를 조절합니다 */
+.fra-imgbox {
+    width: 60%; /* 이미지 박스의 너비 (원하는 크기로 조절) */
+    max-width: 700px; /* 너무 커지지 않게 최대치 제한 */
+    margin: 0 auto; /* 좌우 마진을 auto로 주어 중앙 정렬 */
+    margin-bottom: 60px; /* 이미지와 아래 텍스트 사이의 간격 */
+}
+
+.fra-imgbox img {
+    width: 100%; 
+    height: auto;
+    display: block;
+}
+
+.fragrance-box .fra-txtbox {
+ text-align: center;
+}
+.fragrance-box .fra-txtbox h3 {
+    font-size: 26px;
+    margin-bottom: 18px;
+}
+
+.fragrance-box .fra-txtbox p {
+     font-size: 20px;
+
+    /* 줄 간격 추가: 1.6~1.8 사이가 가장 고급스럽습니다 */
+    line-height: 1.8;
+    
+    /* 자간 조절: 살짝 좁히면(-0.02em) 더 정갈해 보입니다 */
+    letter-spacing: -0.02em;
+    
+    /* 텍스트 가독성을 위해 상단 여백 살짝 조절 (필요시) */
+    margin-top: 20px;
+}

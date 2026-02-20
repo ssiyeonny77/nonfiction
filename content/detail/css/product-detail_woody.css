@@ -1,0 +1,170 @@
+/* product-detail_woody */
+
+/* 메인 배너 전체 영역 */
+.main-bg {
+    width: 100%;
+    padding: 100px 0;
+    /* 위아래 여백을 살짝 줄여 더 정갈하게 */
+    background-color: #F0EDE5;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 종이 질감 레이어 (아까 배운 SVG 노이즈) */
+.main-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 미세한 입자감을 주는 노이즈 배경 */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.07;
+    /* 우디는 질감이 좀 느껴져야 고급스러워요 */
+    pointer-events: none;
+    /* 마우스 클릭 무시 */
+    z-index: 1;
+}
+
+/* 글자 박스 설정 */
+.txt-box {
+    position: relative;
+    z-index: 2;
+    /* 질감 레이어보다 위로 올리기 */
+}
+
+.txt-box h2 {
+
+
+    position: relative;
+    /* 선의 위치를 잡기 위한 기준 */
+    padding-top: 24px;
+    /* 선과 글자 사이의 간격 */
+    display: inline-block;
+    /* 폰트 디테일 수정 */
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    /* 크기를 더 줄여서 정갈하게 (기존 2.8~3.5에서 축소) */
+    font-weight: 400;
+    /* 글씨 두께를 얇게 (중요!) */
+    color: #1B3322;
+    letter-spacing: 0.06em;
+    /* 자간을 더 넓게 벌려서 우아한 느낌 추가 */
+    text-transform: lowercase;
+    /* 시안처럼 소문자로 표현하면 더 감성적입니다 */
+    /* 글자 사이 간격을 넓혀 고급스러움 추가 */
+}
+
+
+.txt-box h2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    /* 중앙에서 시작 */
+    transform: translateX(-50%);
+    width: 40px;
+    height: 1px;
+    /* 선의 두께 */
+    background-color: #1B3322;
+   
+}
+
+.txt-box p {
+    max-width: 700px;
+    /* 본문이 너무 길게 늘어지지 않게 제한 */
+    margin: 0 auto;
+    /* 중앙 정렬 */
+    font-size: 16px;
+    /* 크기를 살짝 더 줄이면 더 여려보이고 세련됨 */
+    color: #777;
+    /* 대비를 낮춰 차분하게 */
+    line-height: 1.8;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    word-break: keep-all;
+    /* 한글 단어가 잘리지 않게 설정 */
+    margin-top: 20px;
+}
+
+
+
+.total-category .category-section {
+    margin: 100px 0 120px;
+}
+.category-title::before {
+    content: "";
+    position: absolute;
+    top: -36%; 
+    left: 50%; 
+    transform: translateX(-50%);
+    width: 120px;
+    height: 120px;
+    background: url('../images/nonfiction_halflogo.png') no-repeat center / contain; /* 한 줄로 작성 */
+}
+.total-category .category-section .category-title {
+    text-align: center;
+   margin-bottom: 30px;
+   font-size: 26px;
+    font-family: 'Cormorant Garamond', serif;
+    position: relative;
+    padding-top: 60px;
+}
+
+
+
+
+/* 2. 상품들을 감싸는 판을 중앙 정렬 */
+.content {
+    text-align: center; /* 자식 요소인 .item들을 가운데로 모음 */
+    width: 100%;       /* 너비를 화면에 맞춤 */
+    position: relative;
+    left: 0;           /* JS 이동값이 없으므로 0 고정 */
+}
+
+.item {
+    display: inline-block; 
+    vertical-align: top;   
+    float: none;           
+    
+    width: 350px;          
+    margin: 0 14px 0; 
+    text-align: center;    /* 상품명 텍스트 정렬 */
+}
+
+/* 이미지 및 호버 효과 (작성하신 코드 유지) */
+.item .img-box {
+    width: 100%;       
+    height: 400px;    
+    overflow: hidden;  
+    position: relative;
+}
+
+.item .img-box img {
+    width: 100%;       
+    height: 100%;      
+    object-fit: cover; 
+    display: block;
+    transition: opacity 0.5s; 
+}
+
+.item .img-box img.change {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;   
+}
+
+.item:hover .img-box img.change {
+    opacity: 1;  
+}
+
+.item p {
+    margin-top: 15px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: #333;
+    
+}

@@ -6,35 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>fragrance</title>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Noto+Sans+KR:wght@100..900&
+     family=Noto+Serif+KR:wght@200..900&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="css/fragrance.css">
+
+
+    <script src="script/jquery-1.12.4.min.js"></script>
+    <script src="script/fragrance.js"></script>
 </head>
 
 <body>
     <header>
         <div class="inbox clearfix">
             <nav class="gnb-left">
-                <ul>
+                <ul>  
                     <li><a href="brandstory.html">Brandstory</a></li>
-                    <li><a href="#">Fragrance</a></li>
+                    <li><a href="fragrance.html">Fragrance</a></li>
                 </ul>
             </nav>
 
             <h1 class="logo">
                 <a href="../index.html">
-                    <img src="../img/nonfiction_logo.png.png" alt="논픽션로고">
+                    <img src="../img/nonfiction_letterlogo.png" alt="논픽션로고">
                 </a>
             </h1>
 
             <nav class="gnb-right">
                 <ul>
-                    <li><a href="#">Product</a></li>
-                    <li><a href="#">Stores</a></li>
+                    <li><a href="product.html">Product</a></li>
+                    <li><a href="stores.html">Stores</a></li>
                 </ul>
             </nav>
         </div>
@@ -70,7 +74,7 @@
     </div>
 
     <!-- 내용이 보여질 덩어리 -->
-    <div class="tab-box inner">
+    <section class="all-box inner">
         <div id="box1" class="con1 on">
 
             <div class="sig-collection">
@@ -78,6 +82,10 @@
                 <p>논픽션의 시그니처, 이야기를 담은 시그니처향을 만나보세요.</p>
             </div>
 
+            <div class="btn-group">
+                <a href="#" class="prev"><img src="images/fragrance/prev.png" alt="prev"></a>
+                <a href="#" class="next"><img src="images/fragrance/next.png" alt="next"></a>
+            </div>
 
             <div class="appear"> <!-- 보이는 화면만 나타냄 -->
                 <div class="slider-track"> <!-- 슬라이드 총 3개가로 나열 -->
@@ -172,7 +180,7 @@
 
                                     <div class="character-item">
                                         <h4>Character</h4>
-                                        <p>차분하고 고요한 밤의 분위기를 닮은 향의 변주를 강조합니다.</p>
+                                        <p>차분하고 고요한 밤의 분위기를 <br> 닮은 향의 변주를 강조합니다.</p>
                                     </div>
                                 </div>
                             </div>
@@ -222,19 +230,26 @@
                                     </div>
                                     <div class="character-item">
                                         <h4>Character</h4>
-                                        <p>갓 피어난 야생화의 관능적인 조화를 담아 양면적인 매력을 드라마틱하게 표현합니다.</p>
+                                        <p>갓 피어난 야생화의 관능적인 조화를 담아<br> 양면적인 매력을 드라마틱하게 표현합니다.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="downbox-wrap">
-                            <div class="img-downbox"><img src="images/fragrance/gaiacflower.jpg" alt=""></div>
+                            <div class="img-downbox">
+                                <img src="images/fragrance/gaiacflower.jpg" alt="">
+                            </div>
                             <div class="scent-notes">
-                                <div class="note-item"><span class="note-title">Top</span><span class="note-text">Wild
-                                        rose, Pink pepper</span></div>
-                                <div class="note-item"><span class="note-title">Middle</span><span
-                                        class="note-text">Gaiac
-                                        wood, Iris, Ylang-ylang</span></div>
+                                <div class="note-item">
+                                    <span class="note-title">Top</span>
+                                    <span class="note-text">Wild
+                                        rose, Pink pepper</span>
+                                </div>
+                                <div class="note-item">
+                                    <span class="note-title">Middle</span>
+                                    <span class="note-text">Gaiac
+                                        wood, Iris, Ylang-ylang</span>
+                                </div>
                                 <div class="note-item"><span class="note-title">Bottom</span><span
                                         class="note-text">Amber,
                                         Vanilla, Musk</span></div>
@@ -242,99 +257,137 @@
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
-    </div>
 
-    <div id="box2" class="con2 inner">
-        <div class="note-intro">
-            <h2>Fragrance Notes</h2>
-            <p>당신에게 어울리는 향을 찾아보세요.</p>
+
+        <div id="box2" class="con2">
+            <div class="frag-intro">
+                <h2>Fragrance Notes</h2>
+                <p>당신에게 어울리는 향을 찾아보세요.</p>
+            </div>
+            <div class="frag-list">
+                <article class="frag-item">
+                    <div class="frag-imgbox">
+                        <img src="images/fragrance/woody_in.jpg" alt="woody image">
+                    </div>
+                    <div class="frag-textbox">
+                        <h3>Woody</h3>
+                        <p class="frag-subtitle">
+                            따뜻하고 안정감을 주는 향
+                        </p>
+                        <div class="frag-main">
+                            <strong>Main Notes</strong>
+                            <p>시더우드, 샌달우드, 베티버, 히노끼</p>
+                        </div>
+                        <p class="frag-desc">
+                            논픽션의 우디향은 시간이 멈춘 듯한 완벽한 휴식을 선물합니다.<br>
+                            시더우드와 샌달우드의 깊은 향은<br>
+                            마치 목조 서재의 든든한 기둥처럼 당신의 마음을 흔들림 없이 잡아주죠. <br>
+                            이 묵직하고 따뜻한 나무의 온기가 시끄러운 바깥의 소란을 부드럽게 <br>
+                            차단하면서 당신을 가장 안전하고 포근한 품으로 이끌어 줍니다. <br>
+                            또한 지친 마음을 부드러운 온기로 감싸 안으며 <br>
+                            복잡한 생각을 정리하고
+                            내면의 고요함을 되찾게 해주는 나만의 안식처를 떠올리게 됩니다.
+                        </p>
+                        <p class="signature-frag">
+                            Signature fragrance : Santal Cream, Gentle Night
+                        </p>
+                    </div>
+                </article>
+
+                <article class="frag-item even">
+                    <div class="frag-textbox">
+                        <h3>Floral</h3>
+                        <p class="frag-subtitle">
+                            우아함의 깊이를 전달하는 매력적인 향
+                        </p>
+                        <div class="frag-main">
+                            <strong>Main Notes</strong>
+                            <p>베르가못 , 네롤리 , 오키드 , 가이악 우드</p>
+                        </div>
+                        <p class="frag-desc">
+                            논픽션의 플로럴향은
+                            흔한 꽃다발의 달콤함 대신, <br> 성숙하고 비밀스러운 매력을 지닙니다. <br>
+                            묵직하고 따뜻한 우디 베이스가 당신의 마음을 단단하게 감싸주죠. <br>
+                            그 단단한 우디함 위에서 신비롭고 <br>
+                            우아한 플로럴 노트가 은은하게 피어오릅니다. <br>
+                            이 조합은 향의 깊이와 매력을 더해  <br> 관능적이고
+                            비밀스러운 분위기를 풍깁니다. <br>
+                            시간이 지날수록 우디와 섞여 더욱 깊어지는 특별한 잔향을 남깁니다.
+                        </p>
+                        <p class="signature-frag">
+                            Signature fragrance : Simple Garden , Neroli Dream , Gaiac Flower
+                        </p>
+                    </div>
+                    <div class="frag-imgbox">
+                        <img src="images/fragrance/floral_in.jpg" alt="floral images">
+                    </div>
+                </article>
+
+
+                <article class="frag-item">
+                    <div class="frag-imgbox">
+                        <img src="images/fragrance/citrus.jpg" alt="citrus image">
+                    </div>
+                    <div class="frag-textbox">
+                        <h3>Citrus/Fresh</h3>
+                        <p class="frag-subtitle">
+                            상큼하고 활기찬 기운을 선사하는 향
+                        </p>
+                        <div class="frag-main">
+                            <strong>Main Notes</strong>
+                            <p>베르가못, 비터 오렌지, 바질, 네롤리</p>
+                        </div>
+                        <p class="frag-desc">
+                            논픽션의 시트러스/그린 향은 답답한 일상에 <br> 청량하고
+                            상쾌한 기운을 불어넣어 줍니다. <br>
+                            톡 쏘는 듯한 베르가못과 비터 오렌지의 시트러스 향은 <br>
+                            마치 이른 아침 창문을 활짝 열었을 때 들어오는
+                            깨끗한 공기처럼 느껴집니다. <br>
+                            이 상큼함은 바질이나 네롤리 같은 <br>
+                            싱그러운 그린 노트와 조화되어 맑고 독특한 향으로 변합니다. <br>
+                            당신의 감각을 깨워 맑고 새로운 느낌을 선사하는 <br>
+                            가장 프레시하고 깨끗한 순간의 향기입니다.
+                        </p>
+                        <p class="signature-frag">
+                            Signature fragrance: In The Shower , Open Arms , Forget Me Not
+                        </p>
+                    </div>
+                </article>
+
+
+                <article class="frag-item even">
+                    <div class="frag-textbox">
+                        <h3>Musk</h3>
+                        <p class="frag-subtitle">
+                            우아함의 깊이를 전달하는 매력적인 향
+                        </p>
+                        <div class="frag-main">
+                            <strong>Main Notes</strong>
+                            <p>화이트 머스크, 오리스, 다크 머스크, 시프리올</p>
+                        </div>
+                        <p class="frag-desc">
+                            피부에 스며드는 따스한 햇살과 <br> 도심의 세련된 이면을 동시에 담아내어 깊은 안정감을 선사합니다. <br>포근한 베이지 톤의 부드러움과 <br>서늘한
+                            그레이
+                            빛의 대담한 실루엣은 경계를 허물고 <br> 온전한 나 자신에게 집중하게 하는 에너지를 채워줍니다. <br>정갈하면서도 은밀하게 피어오르는 이 향은  <br>시간이 흐를수록 당신만의 고유한
+                            분위기를 <br>
+                            완성하는 감각적인 무드가 됩니다.
+                        </p>
+                        <p class="signature-frag">
+                            Signature fragrance : The Beige, The Grey
+                        </p>
+
+                    </div>
+                    <div class="frag-imgbox">
+                        <img src="images/fragrance/musk.jpg" alt="musk image">
+                    </div>
+                </article>
+            </div>
         </div>
-        <div class="note-list">
-            <article class="note-item woody">
-                <div class="note-imgbox"><img src="images/fragrance/woody_in.jpg" alt=""></div>
-                <div class="note-text">
-                    <h3>Woody</h3>
-                    <p class="note-subtitle">따뜻하고 안정감을 주는 향</p>
-                    <div class="main-notes"><strong>Main Notes</strong>
-                        <p>시더우드, 샌달우드, 베티버, 히노끼</p>
-                    </div>
-                    <p class="note-desc">논픽션의 우디향은 시간이 멈춘 듯한 완벽한 휴식을 선물합니다.
-                        향을 맡는 순간, 시더우드와 샌달우드의 깊은 향은
-                        마치 목조 서재의 든든한 기둥처럼 당신의 마음을 흔들림 없이 잡아주죠.
-                        이 묵직하고 따뜻한 나무의 온기가 시끄러운 바깥의 소란을 부드럽게
-                        차단하면서, 당신을 가장 안전하고 포근한 품으로 이끌어 줍니다.
-                        또한 ,지친 마음을 부드러운 온기로 감싸 안으며,
-                        복잡한 생각을 정리하고
-                        내면의 고요함을 되찾게 해주는 나만의 안식처를 떠올리게 됩니다.</p>
-                    <p class="signature-frag">Signature fragrance : Santal Cream, Gentle Night</p>
-                </div>
-            </article>
-
-            <article class="note-item floral">
-                <div class="note-imgbox"><img src="images/fragrance/floral_in.jpg" alt=""></div>
-                <div class="note-text">
-                    <h3>Woody</h3>
-                    <p class="note-subtitle">우아함의 깊이를 전달하는 매력적인 향</p>
-                    <div class="main-notes"><strong>Main Notes</strong>
-                        <p>베르가못 , 네롤리 , 오키드 , 가이악 우드</p>
-                    </div>
-                    <p class="note-desc">논픽션의 플로럴향은
-                        흔한 꽃다발의 달콤함 대신, 성숙하고 비밀스러운 매력을 지닙니다.
-                        묵직하고 따뜻한 우디 베이스가 당신의 마음을 단단하게 감싸주죠.
-                        또한, 흔들림 없는 안정감을 제공합니다.
-                        그 단단한 우디함 위에서 신비롭고
-                        우아한 플로럴 노트가 은은하게 피어오릅니다.
-                        이 조합은 향의 깊이와 매력을 더해 관능적이고
-                        비밀스러운 분위기를 풍깁니다.
-                        시간이 지날수록 우디와 섞여 더욱 깊어지는 특별한 잔향을 남깁니다.</p>
-                    <p class="signature-frag">Signature fragrance : Simple Garden , Neroli Dream , Gaiac Flower</p>
-                </div>
-            </article>
-
-
-            <article class="note-item citrus">
-                <div class="note-imgbox"><img src="images/fragrance/citrus.jpg" alt=""></div>
-                <div class="note-text">
-                    <h3>Citrus/Fresh</h3>
-                    <p class="note-subtitle">상큼하고 활기찬 기운을 선사하는 향</p>
-                    <div class="main-notes"><strong>Main Notes</strong>
-                        <p>베르가못, 비터 오렌지, 바질, 네롤리</p>
-                    </div>
-                    <p class="note-desc">논픽션의 시트러스/그린 향은 답답한 일상에 청량하고
-                        상쾌한 기운을 불어넣어 줍니다.
-                        톡 쏘는 듯한 베르가못과 비터 오렌지의 시트러스 향은
-                        마치 이른 아침 창문을 활짝 열었을 때 들어오는
-                        깨끗한 공기처럼 느껴집니다.
-                        이 상큼함은 바질이나 네롤리 같은
-                        싱그러운 그린 노트와 조화되어 맑고 독특한 향으로 변합니다.
-                        이는 하루를 기분 좋게 시작할 활력과 에너지를 채워줍니다.
-                        무겁지 않고 가벼우며,
-                        당신의 감각을 깨워 맑고 새로운 느낌을 선사하는
-                        가장 프레시하고 깨끗한 순간의 향기입니다.</p>
-                    <p class="signature-frag">Signature fragrance: In The Shower , Open Arms , Forget Me Not</p>
-                </div>
-            </article>
-
-
-            <article class="note-item musk">
-                <div class="note-imgbox"><img src="images/fragrance/musk.jpg" alt=""></div>
-                <div class="note-text">
-                    <h3>Musk</h3>
-                    <p class="note-subtitle">우아함의 깊이를 전달하는 매력적인 향</p>
-                    <div class="main-notes"><strong>Main Notes</strong>
-                        <p>화이트 머스크, 오리스, 다크 머스크, 시프리올</p>
-                    </div>
-                    <p class="note-desc">피부에 스며드는 따스한 햇살과 도심의 세련된 이면을 동시에 담아내어 깊은 안정감을 선사합니다. 포근한 베이지 톤의 부드러움과 서늘한 그레이
-                        빛의 대담한 실루엣은 경계를 허물고 온전한 나 자신에게 집중하게 하는 에너지를 채워줍니다. 정갈하면서도 은밀하게 피어오르는 이 향은 시간이 흐를수록 당신만의 고유한 분위기를
-                        완성하는 감각적인 무드가 됩니다.</p>
-                    <p class="signature-frag">Sigiture fragrance : The Beige, The Grey</p>
-                </div>
-            </article>
-        </div>
-    </div>
-    </div>
+    </section>
 
 
 
